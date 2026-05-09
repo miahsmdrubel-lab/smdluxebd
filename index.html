@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMD Luxe – Premium Men's Fashion</title>
+  <meta name="description" content="SMD Luxe – বাংলাদেশের সেরা প্রিমিয়াম পুরুষদের ফ্যাশন স্টোর। Sunglasses, Watches, Wallets, Belts, Bracelets।"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --sky: #38bdf8;
+      --sky-dark: #0284c7;
+      --sky-light: #e0f2fe;
+      --sky-mid: #7dd3fc;
+      --white: #ffffff;
+      --off-white: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-400: #94a3b8;
+      --gray-600: #475569;
+      --gray-800: #1e293b;
+      --black: #0f172a;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --green: #22c55e;
+      --shadow-sm: 0 1px 3px rgba(56,189,248,0.1);
+      --shadow: 0 4px 20px rgba(56,189,248,0.15);
+      --shadow-lg: 0 10px 40px rgba(56,189,248,0.2);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--off-white);
+      color: var(--gray-800);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--sky-light); }
+    ::-webkit-scrollbar-thumb { background: var(--sky); border-radius: 10px; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      color: var(--gray-400);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+    .section-header { text-align: center; }
+    .badge-sky {
+      display: inline-block;
+      background: var(--sky-light);
+      color: var(--sky-dark);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(56,189,248,0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(56,189,248,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--sky-dark);
+      border: 2px solid var(--sky);
+    }
+    .btn-outline:hover {
+      background: var(--sky);
+      color: var(--white);
+    }
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      z-index: 9999;
+      transition: transform 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast i { color: var(--sky); }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      background: linear-gradient(135deg, var(--sky-dark), var(--sky));
+      color: var(--white);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .top-bar span { opacity: 0.9; }
+    .top-bar strong { font-weight: 700; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    .navbar.scrolled { box-shadow: 0 4px 30px rgba(56,189,248,0.15); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--sky-dark); }
+    .logo small {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* Search */
+    .search-bar {
+      flex: 1;
+      max-width: 400px;
+      position: relative;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 11px 44px 11px 18px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-family: 'Poppins', sans-serif;
+      background: var(--gray-100);
+      transition: var(--transition);
+      color: var(--gray-800);
+    }
+    .search-bar input:focus {
+      border-color: var(--sky);
+      background: var(--white);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.15);
+    }
+    .search-bar button {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      color: var(--sky-dark);
+      font-size: 1rem;
+    }
+
+    /* Nav Actions */
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-icon-btn {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      border: none;
+    }
+    .nav-icon-btn:hover { background: var(--sky-light); color: var(--sky-dark); }
+    .badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--sky-dark);
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid white;
+    }
+    .nav-login-btn {
+      padding: 9px 20px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      white-space: nowrap;
+    }
+    .nav-login-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+
+    /* Nav Menu */
+    .nav-menu-wrap {
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 2px solid var(--sky-light);
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+      overflow-x: auto;
+    }
+    .nav-menu::-webkit-scrollbar { height: 0; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      border-radius: 8px;
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      border: none;
+      background: none;
+    }
+    .nav-item i { font-size: 1rem; color: var(--sky); }
+    .nav-item:hover, .nav-item.active {
+      color: var(--sky-dark);
+      background: var(--sky-light);
+    }
+    .nav-item.active { font-weight: 600; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--gray-800);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 40%, #7dd3fc 70%, #e0f2fe 100%);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content { color: var(--white); }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .hero-tag span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white);
+      color: var(--sky-dark);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.6); }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.25);
+    }
+    .stat-item { text-align: center; }
+    .stat-item .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      display: block;
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-item .lbl { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      position: relative;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .hero-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.25); }
+    .hero-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .hero-card .name {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .hero-card .price {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    .hero-card:first-child { grid-column: span 2; }
+
+    /* ===== CATEGORIES STRIP ===== */
+    .cat-strip {
+      background: var(--white);
+      padding: 40px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .cat-grid {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cat-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 28px;
+      background: var(--gray-100);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      min-width: 110px;
+    }
+    .cat-chip:hover, .cat-chip.active {
+      background: var(--sky-light);
+      border-color: var(--sky);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .cat-chip i {
+      font-size: 1.8rem;
+      color: var(--sky-dark);
+    }
+    .cat-chip span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+    .cat-chip .count {
+      font-size: 0.7rem;
+      color: var(--gray-400);
+      font-weight: 400;
+    }
+
+    /* ===== PRODUCTS SECTION ===== */
+    .products-section {
+      padding: 80px 0;
+    }
+    .products-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      background: var(--gray-100);
+      color: var(--gray-600);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-tab:hover, .filter-tab.active {
+      background: var(--sky);
+      color: var(--white);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      border: 1px solid var(--gray-200);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--sky-mid);
+    }
+    .product-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 240px;
+      background: var(--sky-light);
+    }
+    .product-img-wrap .emoji-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      background: linear-gradient(135deg, var(--sky-light), #dbeafe);
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .emoji-placeholder { transform: scale(1.08); }
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--red);
+      color: white;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .product-badge.new { background: var(--green); }
+    .product-badge.hot { background: var(--gold); color: var(--black); }
+    .product-actions {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: var(--transition);
+    }
+    .product-card:hover .product-actions { opacity: 1; transform: translateX(0); }
+    .action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: none;
+    }
+    .action-btn:hover { background: var(--sky); color: var(--white); transform: scale(1.1); }
+    .product-info { padding: 18px; }
+    .product-cat {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--sky-dark);
+      margin-bottom: 6px;
+    }
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .stars { color: var(--gold); font-size: 0.75rem; }
+    .rating-count { font-size: 0.72rem; color: var(--gray-400); }
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .price-main {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--sky-dark);
+    }
+    .price-old {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      text-decoration: line-through;
+    }
+    .discount-tag {
+      background: var(--sky-light);
+      color: var(--sky-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 10px;
+    }
+    .product-card-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .btn-cart {
+      padding: 10px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      color: var(--white);
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: var(--transition);
+      border: none;
+    }
+    .btn-cart:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(56,189,248,0.4); }
+    .btn-wa {
+      padding: 10px;
+      background: #25d366;
+      color: var(--white);
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: var(--transition);
+      border: none;
+    }
+    .btn-wa:hover { background: #1da851; transform: translateY(-2px); }
+
+    /* ===== FEATURE BANNER ===== */
+    .feature-banner {
+      background: linear-gradient(135deg, var(--sky-dark) 0%, #0ea5e9 50%, var(--sky) 100%);
+      padding: 60px 0;
+      color: var(--white);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+    }
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .feature-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .feature-item p { font-size: 0.82rem; opacity: 0.8; line-height: 1.6; }
+
+    /* ===== PROMO SECTION ===== */
+    .promo-section { padding: 80px 0; background: var(--white); }
+    .promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .promo-card {
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 280px;
+    }
+    .promo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(2,132,199,0.9), rgba(56,189,248,0.3));
+      z-index: 1;
+    }
+    .promo-card .bg-emoji {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 7rem;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    .promo-card-bg-1 { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
+    .promo-card-bg-2 { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); }
+    .promo-content { position: relative; z-index: 2; color: var(--white); }
+    .promo-content .tag {
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .promo-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .promo-content p { font-size: 0.85rem; opacity: 0.9; margin-bottom: 20px; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { padding: 80px 0; background: var(--gray-100); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--sky-mid); }
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 600; font-size: 0.95rem; }
+    .reviewer-loc { font-size: 0.75rem; color: var(--gray-400); }
+    .review-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; }
+    .review-text { font-size: 0.88rem; color: var(--gray-600); line-height: 1.7; }
+    .verified-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 14px;
+    }
+
+    /* ===== CART SIDEBAR ===== */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.5);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      background: var(--white);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+    }
+    .cart-sidebar.open { right: 0; }
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .cart-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-header h3 i { color: var(--sky-dark); }
+    .close-cart {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      border: none;
+      font-size: 1rem;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .close-cart:hover { background: var(--sky-light); color: var(--sky-dark); }
+    .cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; }
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--gray-400);
+      gap: 16px;
+      text-align: center;
+    }
+    .cart-empty i { font-size: 4rem; color: var(--gray-200); }
+    .cart-empty p { font-size: 0.9rem; }
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-100);
+      align-items: center;
+    }
+    .cart-item-img {
+      width: 70px;
+      height: 70px;
+      background: var(--sky-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
+    .cart-item-price { font-size: 0.9rem; color: var(--sky-dark); font-weight: 700; }
+    .qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--sky-light);
+      color: var(--sky-dark);
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transition: var(--transition);
+    }
+    .qty-btn:hover { background: var(--sky); color: var(--white); }
+    .qty-num { font-weight: 600; font-size: 0.9rem; width: 24px; text-align: center; }
+    .remove-item { color: var(--gray-400); font-size: 0.95rem; cursor: pointer; transition: var(--transition); }
+    .remove-item:hover { color: var(--red); }
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 2px solid var(--sky-light);
+      background: var(--off-white);
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+      color: var(--gray-600);
+    }
+    .cart-total-row.main {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      border-top: 1px solid var(--gray-200);
+      padding-top: 12px;
+      margin-top: 6px;
+    }
+    .cart-total-row.main span:last-child { color: var(--sky-dark); }
+    .checkout-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      color: var(--white);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+      border: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(56,189,248,0.4);
+    }
+    .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(56,189,248,0.5); }
+    .payment-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .pay-chip {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gray-600);
+    }
+    .pay-chip.bkash { color: #d72660; }
+    .pay-chip.nagad { color: #f04a00; }
+    .pay-chip.rocket { color: #6b21a8; }
+    .pay-chip.upay { color: #0070ba; }
+    .pay-chip.cod { color: var(--green); }
+
+    /* ===== CHECKOUT MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.6);
+      z-index: 3000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+    .modal-header {
+      padding: 28px 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .modal-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--black);
+    }
+    .modal-header p { font-size: 0.85rem; color: var(--gray-400); margin-top: 4px; }
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      border: none;
+      font-size: 1rem;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .modal-close:hover { background: var(--sky-light); color: var(--sky-dark); }
+    .modal-body { padding: 0 28px 28px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 7px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      color: var(--gray-800);
+      background: var(--gray-100);
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      border-color: var(--sky);
+      background: var(--white);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.15);
+    }
+    .payment-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px; }
+    .pay-option {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 12px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+    .pay-option:hover, .pay-option.selected {
+      border-color: var(--sky);
+      background: var(--sky-light);
+      color: var(--sky-dark);
+    }
+    .pay-option i { display: block; font-size: 1.2rem; margin-bottom: 5px; }
+    .order-summary-box {
+      background: var(--sky-light);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .order-summary-box h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--sky-dark);
+    }
+    .order-sum-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.83rem;
+      margin-bottom: 6px;
+      color: var(--gray-600);
+    }
+    .order-sum-row.total {
+      font-weight: 700;
+      color: var(--black);
+      border-top: 1px solid var(--sky-mid);
+      padding-top: 8px;
+      margin-top: 4px;
+      font-size: 0.95rem;
+    }
+    .order-sum-row.total span:last-child { color: var(--sky-dark); }
+    .place-order-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      color: var(--white);
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(56,189,248,0.4);
+    }
+    .place-order-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(56,189,248,0.5); }
+
+    /* ===== WISHLIST SIDEBAR ===== */
+    .wishlist-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      background: var(--white);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+    }
+    .wishlist-sidebar.open { right: 0; }
+
+    /* ===== LOGIN MODAL ===== */
+    .login-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--gray-200);
+      margin-bottom: 24px;
+    }
+    .login-tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--gray-400);
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+    .login-tab.active { color: var(--sky-dark); border-bottom-color: var(--sky-dark); }
+    .login-form { display: none; }
+    .login-form.active { display: block; }
+
+    /* ===== ADMIN PANEL ===== */
+    .admin-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.6);
+      z-index: 5000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      backdrop-filter: blur(6px);
+    }
+    .admin-overlay.open { opacity: 1; pointer-events: all; }
+    .admin-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 900px;
+      height: 100vh;
+      background: var(--white);
+      z-index: 5001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -10px 0 50px rgba(0,0,0,0.2);
+    }
+    .admin-panel.open { right: 0; }
+    .admin-header {
+      background: linear-gradient(135deg, var(--sky-dark), var(--sky));
+      color: var(--white);
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .admin-header h2 { font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .admin-close {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: var(--white);
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .admin-close:hover { background: rgba(255,255,255,0.3); }
+    .admin-body { display: flex; flex: 1; overflow: hidden; }
+    .admin-nav {
+      width: 200px;
+      background: var(--gray-800);
+      padding: 20px 0;
+      flex-shrink: 0;
+      overflow-y: auto;
+    }
+    .admin-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      color: var(--gray-400);
+      font-size: 0.83rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+    .admin-nav-item:hover, .admin-nav-item.active {
+      background: rgba(56,189,248,0.15);
+      color: var(--sky);
+    }
+    .admin-nav-item i { font-size: 1rem; }
+    .admin-content { flex: 1; overflow-y: auto; padding: 28px; }
+    .admin-section { display: none; }
+    .admin-section.active { display: block; }
+    .admin-section h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--sky-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admin-section h3 i { color: var(--sky-dark); }
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .admin-stat {
+      background: var(--sky-light);
+      border-radius: var(--radius-sm);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .admin-stat .num { font-size: 1.8rem; font-weight: 800; color: var(--sky-dark); display: block; }
+    .admin-stat .lbl { font-size: 0.75rem; color: var(--gray-600); margin-top: 4px; }
+    .admin-table { width: 100%; border-collapse: collapse; }
+    .admin-table th, .admin-table td {
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 0.83rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .admin-table th { background: var(--sky-light); color: var(--sky-dark); font-weight: 700; }
+    .admin-table tr:hover td { background: var(--off-white); }
+    .admin-table td .action-btns { display: flex; gap: 8px; }
+    .admin-table td .action-btns button {
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-edit { background: var(--sky-light); color: var(--sky-dark); }
+    .btn-del { background: #fee2e2; color: var(--red); }
+    .btn-edit:hover { background: var(--sky); color: var(--white); }
+    .btn-del:hover { background: var(--red); color: var(--white); }
+    .add-product-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .status-badge {
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .status-pending { background: #fef3c7; color: #d97706; }
+    .status-confirmed { background: #d1fae5; color: #059669; }
+    .status-delivered { background: var(--sky-light); color: var(--sky-dark); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 64px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo { color: var(--white); }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 16px 0 24px; max-width: 280px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .social-link:hover { background: var(--sky-dark); color: var(--white); border-color: var(--sky-dark); }
+    .footer-col h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--sky);
+      margin-bottom: 20px;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links a:hover { color: var(--sky); padding-left: 4px; }
+    .footer-links a i { font-size: 0.7rem; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .contact-item i { color: var(--sky); font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+    .contact-item span { color: rgba(255,255,255,0.6); font-size: 0.83rem; line-height: 1.6; }
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+    .footer-bottom .pay-methods { display: flex; gap: 8px; }
+    .footer-bottom .pay-pill {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ===== WA FLOAT BTN ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 58px;
+      height: 58px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      z-index: 999;
+      transition: var(--transition);
+      animation: pulse-wa 2.5s infinite;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37,211,102,0.6); }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8); }
+    }
+
+    /* ===== SCROLL TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: var(--sky-dark);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 998;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); }
+    .scroll-top:hover { background: var(--sky); transform: translateY(-3px); }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--white);
+      z-index: 1500;
+      flex-direction: column;
+      padding: 80px 28px 40px;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      border: none;
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-800);
+      cursor: pointer;
+    }
+    .mobile-nav-item i { color: var(--sky-dark); font-size: 1.1rem; width: 24px; }
+
+    /* ===== ORDER SUCCESS ===== */
+    .order-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+      color: var(--white);
+    }
+    .order-success h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+    .order-success p { color: var(--gray-400); font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
+    .order-id {
+      background: var(--sky-light);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--sky-dark);
+      margin-bottom: 24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .hero-inner { gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-menu-wrap { display: none; }
+      .search-bar { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero { min-height: 70vh; }
+      .hero-visual { display: none; }
+      .hero-stats { gap: 20px; }
+      .promo-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+      .admin-nav { display: none; }
+      .add-product-form .form-row { grid-template-columns: 1fr; }
+      .payment-select { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .product-img-wrap { height: 180px; }
+      .product-img-wrap .emoji-placeholder { font-size: 3.5rem; }
+      .product-card-btns { grid-template-columns: 1fr; }
+      .cat-chip { min-width: 90px; padding: 14px 16px; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span>🚀 বিশেষ অফার: <strong>৳500+</strong> অর্ডারে বিনামূল্যে ডেলিভারি! | WhatsApp অর্ডার: <strong>01315086083</strong></span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="logo" onclick="showSection('all')">
+        SMD<span>Luxe</span>
+        <small>Premium Men's Collection</small>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন..." oninput="searchProducts(this.value)"/>
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="toggleWishlist()" title="Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="badge-count" id="wishBadge" style="display:none">0</span>
+        </button>
+        <button class="nav-icon-btn" onclick="toggleCart()" title="Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge-count" id="cartBadge">0</span>
+        </button>
+        <button class="nav-login-btn" onclick="openLogin()">
+          <i class="fas fa-user"></i> লগইন
+        </button>
+        <div class="hamburger" onclick="toggleMobile()" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Category Nav -->
+  <div class="nav-menu-wrap">
+    <div class="container">
+      <ul class="nav-menu">
+        <li><button class="nav-item active" onclick="showSection('all', this)"><i class="fas fa-th-large"></i> সব পণ্য</button></li>
+        <li><button class="nav-item" onclick="showSection('sunglasses', this)"><i class="fas fa-sun"></i> Sunglasses</button></li>
+        <li><button class="nav-item" onclick="showSection('watches', this)"><i class="fas fa-clock"></i> Watches</button></li>
+        <li><button class="nav-item" onclick="showSection('wallets', this)"><i class="fas fa-wallet"></i> Wallets</button></li>
+        <li><button class="nav-item" onclick="showSection('belts', this)"><i class="fas fa-link"></i> Belts</button></li>
+        <li><button class="nav-item" onclick="showSection('bracelets', this)"><i class="fas fa-hand-holding"></i> Bracelets</button></li>
+        <li><button class="nav-item" onclick="openAdmin()"><i class="fas fa-shield-halved"></i> Admin</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="toggleMobile()"><i class="fas fa-times"></i></button>
+  <div style="margin-bottom:24px;">
+    <div class="search-bar" style="display:block; max-width:100%;">
+      <input type="text" placeholder="পণ্য খুঁজুন..." oninput="searchProducts(this.value)"/>
+      <button><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+  <div class="mobile-nav-item" onclick="showSection('all');toggleMobile()"><i class="fas fa-th-large"></i> সব পণ্য</div>
+  <div class="mobile-nav-item" onclick="showSection('sunglasses');toggleMobile()"><i class="fas fa-sun"></i> Sunglasses</div>
+  <div class="mobile-nav-item" onclick="showSection('watches');toggleMobile()"><i class="fas fa-clock"></i> Watches</div>
+  <div class="mobile-nav-item" onclick="showSection('wallets');toggleMobile()"><i class="fas fa-wallet"></i> Wallets</div>
+  <div class="mobile-nav-item" onclick="showSection('belts');toggleMobile()"><i class="fas fa-link"></i> Belts</div>
+  <div class="mobile-nav-item" onclick="showSection('bracelets');toggleMobile()"><i class="fas fa-hand-holding"></i> Bracelets</div>
+  <div class="mobile-nav-item" onclick="toggleCart();toggleMobile()"><i class="fas fa-shopping-bag"></i> Cart (<span id="mobileCartCount">0</span>)</div>
+  <div class="mobile-nav-item" onclick="openLogin();toggleMobile()"><i class="fas fa-user"></i> লগইন / সাইনআপ</div>
+  <div class="mobile-nav-item" onclick="openAdmin();toggleMobile()"><i class="fas fa-shield-halved"></i> Admin Panel</div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero" id="heroSection">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag"><span></span> বাংলাদেশের নম্বর ১ মেন্স স্টোর</div>
+        <h1>Style Defines<br/>A <em>Gentleman</em>'s<br/>True Character</h1>
+        <p>প্রিমিয়াম মানের Sunglasses, Watches, Wallets, Belts ও Bracelets – সব একটি জায়গায়। আপনার স্টাইলকে নতুন উচ্চতায় নিয়ে যান।</p>
+        <div class="hero-btns">
+          <button class="btn-white" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-shopping-bag"></i> এখনই কিনুন
+          </button>
+          <a href="https://wa.me/8801315086083" target="_blank" class="btn-ghost">
+            <i class="fab fa-whatsapp"></i> WhatsApp করুন
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="num">500+</span><span class="lbl">পণ্য</span></div>
+          <div class="stat-item"><span class="num">2K+</span><span class="lbl">গ্রাহক</span></div>
+          <div class="stat-item"><span class="num">4.9★</span><span class="lbl">রেটিং</span></div>
+          <div class="stat-item"><span class="num">COD</span><span class="lbl">ডেলিভারি</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card" onclick="showSection('watches')">
+          <span class="icon">⌚</span>
+          <div class="name">Premium Watches</div>
+          <div class="price">৳ ১,২০০ থেকে শুরু</div>
+        </div>
+        <div class="hero-card" onclick="showSection('sunglasses')">
+          <span class="icon">🕶️</span>
+          <div class="name">Sunglasses</div>
+          <div class="price">৳ ৬৫০ থেকে</div>
+        </div>
+        <div class="hero-card" onclick="showSection('wallets')">
+          <span class="icon">👜</span>
+          <div class="name">Wallets</div>
+          <div class="price">৳ ৪৫০ থেকে</div>
+        </div>
+        <div class="hero-card" onclick="showSection('bracelets')">
+          <span class="icon">📿</span>
+          <div class="name">Bracelets</div>
+          <div class="price">৳ ৩৫০ থেকে</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY STRIP -->
+<section class="cat-strip" id="catStrip">
+  <div class="container">
+    <div class="cat-grid">
+      <div class="cat-chip active" onclick="showSection('all', null, this)">
+        <i class="fas fa-th-large"></i>
+        <span>সব পণ্য</span>
+        <span class="count">সব দেখুন</span>
+      </div>
+      <div class="cat-chip" onclick="showSection('sunglasses', null, this)">
+        <i class="fas fa-sun"></i>
+        <span>Sunglasses</span>
+        <span class="count">৬+ পণ্য</span>
+      </div>
+      <div class="cat-chip" onclick="showSection('watches', null, this)">
+        <i class="fas fa-clock"></i>
+        <span>Watches</span>
+        <span class="count">৬+ পণ্য</span>
+      </div>
+      <div class="cat-chip" onclick="showSection('wallets', null, this)">
+        <i class="fas fa-wallet"></i>
+        <span>Wallets</span>
+        <span class="count">৬+ পণ্য</span>
+      </div>
+      <div class="cat-chip" onclick="showSection('belts', null, this)">
+        <i class="fas fa-link"></i>
+        <span>Belts</span>
+        <span class="count">৬+ পণ্য</span>
+      </div>
+      <div class="cat-chip" onclick="showSection('bracelets', null, this)">
+        <i class="fas fa-hand-holding"></i>
+        <span>Bracelets</span>
+        <span class="count">৬+ পণ্য</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section" id="productsSection">
+  <div class="container">
+    <div class="products-header">
+      <div>
+        <span class="badge-sky">Our Collection</span>
+        <h2 class="section-title" id="sectionTitle">সব প্রিমিয়াম পণ্য</h2>
+        <p class="section-sub" style="margin:0" id="sectionSub">সেরা মানের পুরুষদের ফ্যাশন অ্যাক্সেসরিজ</p>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="sortProducts('all', this)">সব</button>
+        <button class="filter-tab" onclick="sortProducts('low', this)">কম দামে</button>
+        <button class="filter-tab" onclick="sortProducts('high', this)">বেশি দামে</button>
+        <button class="filter-tab" onclick="sortProducts('discount', this)">ছাড়ে</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products rendered by JS -->
+    </div>
+    <div style="text-align:center; margin-top:40px;" id="noProducts" style="display:none">
+      <p style="color:var(--gray-400); font-size:1rem;">কোনো পণ্য পাওয়া যায়নি।</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BANNER -->
+<section class="feature-banner">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+        <h4>দ্রুত ডেলিভারি</h4>
+        <p>সারাদেশে ২-৩ দিনের মধ্যে ডেলিভারি</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-shield-check"></i></div>
+        <h4>১০০% অরিজিনাল</h4>
+        <p>সব পণ্য অরিজিনাল ও মান নিশ্চিত</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-rotate-left"></i></div>
+        <h4>সহজ রিটার্ন</h4>
+        <p>৭ দিনের মধ্যে রিটার্ন করুন</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+        <h4>২৪/৭ সাপোর্ট</h4>
+        <p>WhatsApp-এ যেকোনো সময় যোগাযোগ করুন</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO SECTION -->
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-grid">
+      <div class="promo-card promo-card-bg-1">
+        <div class="bg-emoji">⌚</div>
+        <div class="promo-content">
+          <span class="tag">🔥 হট ডিল</span>
+          <h3>Premium Watches<br/>এখন ৩০% ছাড়ে</h3>
+          <p>সীমিত সময়ের অফার – আজই অর্ডার করুন!</p>
+          <button class="btn-white" onclick="showSection('watches')">
+            <i class="fas fa-arrow-right"></i> দেখুন
+          </button>
+        </div>
+      </div>
+      <div class="promo-card promo-card-bg-2">
+        <div class="bg-emoji">🕶️</div>
+        <div class="promo-content">
+          <span class="tag">✨ নতুন আগমন</span>
+          <h3>Luxury Sunglasses<br/>কালেকশন ২০২৫</h3>
+          <p>স্টাইলিশ ডিজাইনে নতুন সংগ্রহ এসেছে!</p>
+          <button class="btn-white" onclick="showSection('sunglasses')">
+            <i class="fas fa-arrow-right"></i> দেখুন
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge-sky">Reviews</span>
+      <h2 class="section-title">আমাদের গ্রাহকরা কী বলেন</h2>
+      <p class="section-sub">হাজারো সন্তুষ্ট গ্রাহকের বিশ্বাস আমাদের গর্ব</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">রা</div>
+          <div>
+            <div class="reviewer-name">রাফি আহমেদ</div>
+            <div class="reviewer-loc">ঢাকা, বাংলাদেশ</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">ওয়াচটা অসাধারণ! দাম একটু বেশি মনে হলেও কোয়ালিটি একদম টপ নচ। প্যাকেজিংও খুব সুন্দর ছিল।</p>
+        <div class="verified-tag"><i class="fas fa-check-circle"></i> Verified Purchase</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">সা</div>
+          <div>
+            <div class="reviewer-name">সাকিব হাসান</div>
+            <div class="reviewer-loc">চট্টগ্রাম</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Sunglasses টা অনেক ভালো মানের। দ্রুত ডেলিভারি পেয়েছি। SMD Luxe থেকে আরো কিনব ইনশাআল্লাহ।</p>
+        <div class="verified-tag"><i class="fas fa-check-circle"></i> Verified Purchase</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">তা</div>
+          <div>
+            <div class="reviewer-name">তানভীর ইসলাম</div>
+            <div class="reviewer-loc">সিলেট</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">Wallet টা অনেক সুন্দর। চামড়ার মান ভালো। WhatsApp-এ অর্ডার করা অনেক সহজ ছিল।</p>
+        <div class="verified-tag"><i class="fas fa-check-circle"></i> Verified Purchase</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">SMD<span style="color:var(--sky)">Luxe</span><small style="color:rgba(255,255,255,0.3)">Premium Men's Collection</small></div>
+        <p>বাংলাদেশের সেরা পুরুষদের ফ্যাশন স্টোর। প্রিমিয়াম মানের পণ্য, সাশ্রয়ী দামে।</p>
+        <div class="social-links">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="https://wa.me/8801315086083" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showSection('sunglasses')"><i class="fas fa-chevron-right"></i> Sunglasses</a></li>
+          <li><a href="#" onclick="showSection('watches')"><i class="fas fa-chevron-right"></i> Watches</a></li>
+          <li><a href="#" onclick="showSection('wallets')"><i class="fas fa-chevron-right"></i> Wallets</a></li>
+          <li><a href="#" onclick="showSection('belts')"><i class="fas fa-chevron-right"></i> Belts</a></li>
+          <li><a href="#" onclick="showSection('bracelets')"><i class="fas fa-chevron-right"></i> Bracelets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> আমাদের সম্পর্কে</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> রিটার্ন পলিসি</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> অর্ডার ট্র্যাকিং</a></li>
+          <li><a href="#" onclick="openLogin()"><i class="fas fa-chevron-right"></i> লগইন / সাইনআপ</a></li>
+          <li><a href="#" onclick="openAdmin()"><i class="fas fa-chevron-right"></i> Admin Panel</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <div class="contact-item"><i class="fab fa-whatsapp"></i><span>01315086083</span></div>
+        <div class="contact-item"><i class="fas fa-clock"></i><span>সকাল ৯টা – রাত ১১টা</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>বাংলাদেশ</span></div>
+        <div class="contact-item"><i class="fas fa-money-bill-wave"></i><span>bKash / Nagad / Upay / Rocket / COD<br/>01315086083</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SMD Luxe. সর্বস্বত্ব সংরক্ষিত।</p>
+      <div class="pay-methods">
+        <span class="pay-pill">bKash</span>
+        <span class="pay-pill">Nagad</span>
+        <span class="pay-pill">Upay</span>
+        <span class="pay-pill">Rocket</span>
+        <span class="pay-pill">COD</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/8801315086083?text=আমি%20SMD%20Luxe%20থেকে%20অর্ডার%20করতে%20চাই।" target="_blank" title="WhatsApp অর্ডার">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- CART OVERLAY + SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-bag"></i> আমার Cart</h3>
+    <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Cart খালি আছে।<br/>পণ্য যোগ করুন!</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">৳ ০</span></div>
+    <div class="cart-total-row"><span>ডেলিভারি চার্জ</span><span>৳ ৬০</span></div>
+    <div class="cart-total-row main"><span>মোট</span><span id="cartTotal">৳ ৬০</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">
+      <i class="fas fa-lock"></i> Checkout করুন
+    </button>
+    <div class="payment-icons">
+      <span class="pay-chip bkash">bKash</span>
+      <span class="pay-chip nagad">Nagad</span>
+      <span class="pay-chip rocket">Rocket</span>
+      <span class="pay-chip upay">Upay</span>
+      <span class="pay-chip cod">COD</span>
+    </div>
+  </div>
+</div>
+
+<!-- WISHLIST OVERLAY + SIDEBAR -->
+<div class="cart-overlay" id="wishOverlay" onclick="toggleWishlist()"></div>
+<div class="wishlist-sidebar" id="wishlistSidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-heart" style="color:var(--red)"></i> Wishlist</h3>
+    <button class="close-cart" onclick="toggleWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="wishlistItems">
+    <div class="cart-empty">
+      <i class="fas fa-heart"></i>
+      <p>Wishlist খালি।<br/>পছন্দের পণ্য সংরক্ষণ করুন!</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal" id="checkoutModalBox">
+    <div class="modal-header">
+      <div>
+        <h2>Checkout</h2>
+        <p>আপনার তথ্য দিন ও অর্ডার দিন</p>
+      </div>
+      <button class="modal-close" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="checkoutBody">
+      <div class="order-summary-box">
+        <h4><i class="fas fa-receipt"></i> অর্ডার সারসংক্ষেপ</h4>
+        <div id="checkoutItems"></div>
+        <div class="order-sum-row total"><span>মোট পরিমাণ</span><span id="checkoutTotal">৳ ০</span></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">সম্পূর্ণ নাম *</label>
+        <input type="text" class="form-control" id="custName" placeholder="আপনার নাম লিখুন"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">মোবাইল নম্বর *</label>
+        <input type="tel" class="form-control" id="custPhone" placeholder="01XXXXXXXXX"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ডেলিভারি ঠিকানা *</label>
+        <textarea class="form-control" id="custAddress" rows="3" placeholder="পূর্ণ ঠিকানা লিখুন..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">পেমেন্ট পদ্ধতি *</label>
+        <div class="payment-select">
+          <div class="pay-option" onclick="selectPay(this,'bkash')"><i class="fas fa-mobile-alt" style="color:#d72660"></i> bKash</div>
+          <div class="pay-option" onclick="selectPay(this,'nagad')"><i class="fas fa-mobile-alt" style="color:#f04a00"></i> Nagad</div>
+          <div class="pay-option" onclick="selectPay(this,'rocket')"><i class="fas fa-mobile-alt" style="color:#6b21a8"></i> Rocket</div>
+          <div class="pay-option" onclick="selectPay(this,'upay')"><i class="fas fa-mobile-alt" style="color:#0070ba"></i> Upay</div>
+          <div class="pay-option selected" onclick="selectPay(this,'cod')"><i class="fas fa-money-bill-wave" style="color:var(--green)"></i> COD</div>
+          <div class="pay-option" onclick="selectPay(this,'whatsapp')"><i class="fab fa-whatsapp" style="color:#25d366"></i> WhatsApp</div>
+        </div>
+      </div>
+      <div id="paymentInfo" style="background:var(--sky-light);border-radius:12px;padding:14px;margin-bottom:18px;font-size:0.85rem;color:var(--sky-dark);font-weight:600;display:none">
+        <i class="fas fa-info-circle"></i> Send Money নম্বর: <strong>01315086083</strong>
+      </div>
+      <div class="form-group">
+        <label class="form-label">কুপন কোড (ঐচ্ছিক)</label>
+        <div style="display:flex;gap:10px;">
+          <input type="text" class="form-control" id="couponCode" placeholder="SMDLUXE10"/>
+          <button class="btn btn-outline" onclick="applyCoupon()" style="white-space:nowrap;padding:11px 20px;border-radius:12px">প্রয়োগ</button>
+        </div>
+      </div>
+      <button class="place-order-btn" onclick="placeOrder()">
+        <i class="fas fa-check-circle"></i> অর্ডার নিশ্চিত করুন
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>স্বাগতম!</h2>
+        <p>আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
+      </div>
+      <button class="modal-close" onclick="closeLogin()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="login-tabs">
+        <button class="login-tab active" onclick="switchLoginTab('login', this)">লগইন</button>
+        <button class="login-tab" onclick="switchLoginTab('signup', this)">সাইনআপ</button>
+      </div>
+      <div class="login-form active" id="loginForm">
+        <div class="form-group">
+          <label class="form-label">মোবাইল / ইমেইল</label>
+          <input type="text" class="form-control" placeholder="আপনার নম্বর বা ইমেইল"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">পাসওয়ার্ড</label>
+          <input type="password" class="form-control" placeholder="পাসওয়ার্ড"/>
+        </div>
+        <button class="place-order-btn" onclick="showToast('লগইন সফল হয়েছে! ✓', 'check-circle');closeLogin()">লগইন করুন</button>
+      </div>
+      <div class="login-form" id="signupForm">
+        <div class="form-group">
+          <label class="form-label">সম্পূর্ণ নাম</label>
+          <input type="text" class="form-control" placeholder="আপনার নাম"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">মোবাইল নম্বর</label>
+          <input type="tel" class="form-control" placeholder="01XXXXXXXXX"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">পাসওয়ার্ড</label>
+          <input type="password" class="form-control" placeholder="নতুন পাসওয়ার্ড"/>
+        </div>
+        <button class="place-order-btn" onclick="showToast('অ্যাকাউন্ট তৈরি হয়েছে! ✓', 'check-circle');closeLogin()">সাইনআপ করুন</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="adminOverlay" onclick="closeAdmin()"></div>
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-header">
+    <h2><i class="fas fa-shield-halved"></i> SMD Luxe Admin Dashboard</h2>
+    <button class="admin-close" onclick="closeAdmin()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="admin-body">
+    <nav class="admin-nav">
+      <button class="admin-nav-item active" onclick="adminTab('dashboard', this)"><i class="fas fa-chart-pie"></i> Dashboard</button>
+      <button class="admin-nav-item" onclick="adminTab('products', this)"><i class="fas fa-box"></i> Products</button>
+      <button class="admin-nav-item" onclick="adminTab('addProduct', this)"><i class="fas fa-plus-circle"></i> Add Product</button>
+      <button class="admin-nav-item" onclick="adminTab('orders', this)"><i class="fas fa-shopping-cart"></i> Orders</button>
+      <button class="admin-nav-item" onclick="adminTab('customers', this)"><i class="fas fa-users"></i> Customers</button>
+      <button class="admin-nav-item" onclick="adminTab('payments', this)"><i class="fas fa-credit-card"></i> Payments</button>
+      <button class="admin-nav-item" onclick="adminTab('coupons', this)"><i class="fas fa-tag"></i> Coupons</button>
+      <button class="admin-nav-item" onclick="adminTab('settings', this)"><i class="fas fa-gear"></i> Settings</button>
+    </nav>
+    <div class="admin-content">
+
+      <!-- Dashboard -->
+      <div class="admin-section active" id="admin-dashboard">
+        <h3><i class="fas fa-chart-pie"></i> Dashboard</h3>
+        <div class="admin-grid">
+          <div class="admin-stat"><span class="num" id="totalProductsStat">0</span><div class="lbl">মোট পণ্য</div></div>
+          <div class="admin-stat"><span class="num" id="totalOrdersStat">3</span><div class="lbl">মোট অর্ডার</div></div>
+          <div class="admin-stat"><span class="num">২,৪১৫</span><div class="lbl">গ্রাহক</div></div>
+          <div class="admin-stat"><span class="num">৳৪৮,৫০০</span><div class="lbl">মোট বিক্রয়</div></div>
+        </div>
+        <div style="background:var(--sky-light);border-radius:var(--radius-sm);padding:20px;margin-bottom:20px;">
+          <h4 style="font-size:0.9rem;font-weight:700;color:var(--sky-dark);margin-bottom:14px;"><i class="fas fa-bell"></i> সাম্প্রতিক কার্যক্রম</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:0.83rem;color:var(--gray-600);">
+            <div>✅ নতুন অর্ডার #SMD-003 – রাফি আহমেদ – Rolex-Style Watch</div>
+            <div>📦 অর্ডার #SMD-002 ডেলিভারি হয়েছে</div>
+            <div>💰 bKash পেমেন্ট নিশ্চিত – ৳১,৮৫০</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Management -->
+      <div class="admin-section" id="admin-products">
+        <h3><i class="fas fa-box"></i> পণ্য ব্যবস্থাপনা</h3>
+        <div style="overflow-x:auto;">
+          <table class="admin-table" id="adminProductTable">
+            <thead>
+              <tr><th>পণ্য</th><th>ক্যাটাগরি</th><th>দাম</th><th>ছাড়</th><th>স্টক</th><th>একশন</th></tr>
+            </thead>
+            <tbody id="adminProductBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Add Product -->
+      <div class="admin-section" id="admin-addProduct">
+        <h3><i class="fas fa-plus-circle"></i> নতুন পণ্য যোগ করুন</h3>
+        <div class="add-product-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">পণ্যের নাম *</label>
+              <input type="text" class="form-control" id="apName" placeholder="পণ্যের নাম"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ক্যাটাগরি *</label>
+              <select class="form-control" id="apCat">
+                <option value="sunglasses">Sunglasses</option>
+                <option value="watches">Watches</option>
+                <option value="wallets">Wallets</option>
+                <option value="belts">Belts</option>
+                <option value="bracelets">Bracelets</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">মূল্য (৳) *</label>
+              <input type="number" class="form-control" id="apPrice" placeholder="1200"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">আসল মূল্য (৳)</label>
+              <input type="number" class="form-control" id="apOldPrice" placeholder="1800"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ব্যাজ</label>
+              <select class="form-control" id="apBadge">
+                <option value="">কোনো ব্যাজ নেই</option>
+                <option value="new">New</option>
+                <option value="hot">Hot</option>
+                <option value="sale">Sale</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">রেটিং</label>
+              <input type="number" class="form-control" id="apRating" placeholder="4.8" min="1" max="5" step="0.1"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">বিবরণ</label>
+            <textarea class="form-control" id="apDesc" rows="3" placeholder="পণ্যের বিবরণ..."></textarea>
+          </div>
+          <button class="place-order-btn" onclick="addProductAdmin()" style="max-width:240px;">
+            <i class="fas fa-plus"></i> পণ্য যোগ করুন
+          </button>
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div class="admin-section" id="admin-orders">
+        <h3><i class="fas fa-shopping-cart"></i> অর্ডার ব্যবস্থাপনা</h3>
+        <div style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead><tr><th>অর্ডার ID</th><th>গ্রাহক</th><th>পণ্য</th><th>মোট</th><th>পেমেন্ট</th><th>স্ট্যাটাস</th><th>একশন</th></tr></thead>
+            <tbody id="adminOrderBody">
+              <tr>
+                <td>#SMD-001</td><td>রাফি আহমেদ</td><td>Premium Watch</td><td>৳১,৮৫০</td>
+                <td><span class="pay-chip bkash">bKash</span></td>
+                <td><span class="status-badge status-delivered">Delivered</span></td>
+                <td><div class="action-btns"><button class="btn-edit">দেখুন</button></div></td>
+              </tr>
+              <tr>
+                <td>#SMD-002</td><td>সাকিব হাসান</td><td>Aviator Glass</td><td>৳৯৫০</td>
+                <td><span class="pay-chip nagad">Nagad</span></td>
+                <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                <td><div class="action-btns"><button class="btn-edit">দেখুন</button></div></td>
+              </tr>
+              <tr>
+                <td>#SMD-003</td><td>তানভীর</td><td>Leather Wallet</td><td>৳৬৫০</td>
+                <td><span class="pay-chip cod">COD</span></td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td><div class="action-btns"><button class="btn-edit">দেখুন</button><button class="btn-edit" style="background:#d1fae5;color:#059669">নিশ্চিত</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Customers -->
+      <div class="admin-section" id="admin-customers">
+        <h3><i class="fas fa-users"></i> গ্রাহক তালিকা</h3>
+        <table class="admin-table">
+          <thead><tr><th>নাম</th><th>ফোন</th><th>ঠিকানা</th><th>মোট অর্ডার</th></tr></thead>
+          <tbody>
+            <tr><td>রাফি আহমেদ</td><td>01712345678</td><td>ঢাকা</td><td>৩</td></tr>
+            <tr><td>সাকিব হাসান</td><td>01898765432</td><td>চট্টগ্রাম</td><td>১</td></tr>
+            <tr><td>তানভীর ইসলাম</td><td>01611223344</td><td>সিলেট</td><td>২</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Payments -->
+      <div class="admin-section" id="admin-payments">
+        <h3><i class="fas fa-credit-card"></i> পেমেন্ট ভেরিফিকেশন</h3>
+        <div style="background:var(--sky-light);border-radius:12px;padding:18px;margin-bottom:20px;font-size:0.88rem;">
+          <strong style="color:var(--sky-dark);">💰 Send Money নম্বর: 01315086083</strong><br/>
+          <span style="color:var(--gray-600)">bKash, Nagad, Rocket, Upay সব পেমেন্ট এই নম্বরে আসবে।</span>
+        </div>
+        <table class="admin-table">
+          <thead><tr><th>অর্ডার</th><th>পরিমাণ</th><th>পদ্ধতি</th><th>Transaction ID</th><th>স্ট্যাটাস</th></tr></thead>
+          <tbody>
+            <tr><td>#SMD-001</td><td>৳১,৮৫০</td><td>bKash</td><td>TXN8F92K1</td><td><span class="status-badge status-confirmed">Verified</span></td></tr>
+            <tr><td>#SMD-002</td><td>৳৯৫০</td><td>Nagad</td><td>NG7X2P9Q</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Coupons -->
+      <div class="admin-section" id="admin-coupons">
+        <h3><i class="fas fa-tag"></i> কুপন ব্যবস্থাপনা</h3>
+        <div class="form-row add-product-form" style="max-width:500px;margin-bottom:24px;">
+          <div class="form-group">
+            <label class="form-label">কুপন কোড</label>
+            <input type="text" class="form-control" placeholder="SMDLUXE10"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ছাড় (%)</label>
+            <input type="number" class="form-control" placeholder="10"/>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-bottom:24px;"><i class="fas fa-plus"></i> কুপন যোগ করুন</button>
+        <table class="admin-table">
+          <thead><tr><th>কুপন</th><th>ছাড়</th><th>ব্যবহার</th><th>স্ট্যাটাস</th></tr></thead>
+          <tbody>
+            <tr><td>SMDLUXE10</td><td>10%</td><td>৪৫ বার</td><td><span class="status-badge status-confirmed">Active</span></td></tr>
+            <tr><td>EID2025</td><td>20%</td><td>১২ বার</td><td><span class="status-badge status-pending">Expired</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Settings -->
+      <div class="admin-section" id="admin-settings">
+        <h3><i class="fas fa-gear"></i> ওয়েবসাইট সেটিংস</h3>
+        <div style="max-width:500px;">
+          <div class="form-group">
+            <label class="form-label">WhatsApp নম্বর</label>
+            <input type="text" class="form-control" value="01315086083" id="settingWA"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">পেমেন্ট নম্বর (Send Money)</label>
+            <input type="text" class="form-control" value="01315086083" id="settingPay"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ওয়েবসাইটের নাম</label>
+            <input type="text" class="form-control" value="SMD Luxe" id="settingSiteName"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hero Banner টেক্সট</label>
+            <textarea class="form-control" rows="2" id="settingBanner">বাংলাদেশের নম্বর ১ মেন্স স্টোর</textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ডেলিভারি চার্জ (৳)</label>
+            <input type="number" class="form-control" value="60" id="settingDelivery"/>
+          </div>
+          <button class="place-order-btn" onclick="saveSettings()" style="max-width:240px;">
+            <i class="fas fa-save"></i> সেটিংস সেভ করুন
+          </button>
+        </div>
+      </div>
+
+    </div><!-- admin-content -->
+  </div><!-- admin-body -->
+</div><!-- admin-panel -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ==================== PRODUCT DATA ====================
+const EMOJIS = {
+  sunglasses: ['🕶️','😎','🕶️','😎','🕶️','😎'],
+  watches: ['⌚','🕰️','⌚','🕰️','⌚','🕰️'],
+  wallets: ['👜','💼','👛','💼','👜','💰'],
+  belts: ['➰','🔗','➰','🔗','➰','🔗'],
+  bracelets: ['📿','⛓️','📿','⛓️','📿','🌀']
+};
+
+let products = [
+  // SUNGLASSES
+  {id:1,name:'Aviator Pro UV400',cat:'sunglasses',price:850,oldPrice:1200,badge:'sale',rating:4.8,reviews:124,desc:'Premium UV400 protection, lightweight frame'},
+  {id:2,name:'Wayfarer Classic Black',cat:'sunglasses',price:650,oldPrice:900,badge:'',rating:4.6,reviews:89,desc:'Iconic wayfarer style with durable frame'},
+  {id:3,name:'Sports Wrap Sunglasses',cat:'sunglasses',price:1100,oldPrice:1400,badge:'hot',rating:4.9,reviews:56,desc:'Ideal for outdoor & sports activities'},
+  {id:4,name:'Square Retro Frame',cat:'sunglasses',price:750,oldPrice:1000,badge:'new',rating:4.7,reviews:43,desc:'Trendy square retro design'},
+  {id:5,name:'Polarized Driving Glass',cat:'sunglasses',price:1350,oldPrice:1800,badge:'sale',rating:4.8,reviews:67,desc:'Anti-glare polarized lens'},
+  {id:6,name:'Slim Metal Frame',cat:'sunglasses',price:950,oldPrice:1300,badge:'',rating:4.5,reviews:31,desc:'Ultra-slim premium metal frame'},
+  // WATCHES
+  {id:7,name:'Rolex-Style Chronograph',cat:'watches',price:2500,oldPrice:3500,badge:'hot',rating:4.9,reviews:203,desc:'Luxury chronograph with steel strap'},
+  {id:8,name:'Minimalist Leather Watch',cat:'watches',price:1800,oldPrice:2400,badge:'sale',rating:4.7,reviews:145,desc:'Clean dial with genuine leather strap'},
+  {id:9,name:'Smart Digital Watch',cat:'watches',price:1200,oldPrice:1600,badge:'new',rating:4.6,reviews:98,desc:'Multi-function digital sports watch'},
+  {id:10,name:'Classic Gold-Dial Watch',cat:'watches',price:3200,oldPrice:4000,badge:'hot',rating:4.9,reviews:87,desc:'Elegant dress watch for formal occasions'},
+  {id:11,name:'Black Matte Sports Watch',cat:'watches',price:1500,oldPrice:2000,badge:'',rating:4.5,reviews:64,desc:'Durable matte finish for active men'},
+  {id:12,name:'Mesh Strap Slim Watch',cat:'watches',price:2100,oldPrice:2800,badge:'sale',rating:4.8,reviews:112,desc:'Stainless steel mesh strap, ultra-thin'},
+  // WALLETS
+  {id:13,name:'Genuine Leather Slim Wallet',cat:'wallets',price:650,oldPrice:900,badge:'sale',rating:4.8,reviews:178,desc:'100% genuine leather, RFID blocking'},
+  {id:14,name:'Bifold Card Wallet',cat:'wallets',price:450,oldPrice:650,badge:'',rating:4.6,reviews:92,desc:'Multiple card slots, compact design'},
+  {id:15,name:'Money Clip Wallet',cat:'wallets',price:550,oldPrice:750,badge:'new',rating:4.7,reviews:54,desc:'Modern money clip with card holder'},
+  {id:16,name:'Premium Zip Wallet',cat:'wallets',price:850,oldPrice:1100,badge:'hot',rating:4.9,reviews:43,desc:'Full-zip wallet with coin pocket'},
+  {id:17,name:'Minimalist Card Holder',cat:'wallets',price:350,oldPrice:500,badge:'',rating:4.5,reviews:67,desc:'Ultra-slim card holder for essentials'},
+  {id:18,name:'Executive Long Wallet',cat:'wallets',price:1100,oldPrice:1500,badge:'sale',rating:4.8,reviews:38,desc:'Premium long wallet for executives'},
+  // BELTS
+  {id:19,name:'Genuine Leather Dress Belt',cat:'belts',price:750,oldPrice:1000,badge:'sale',rating:4.8,reviews:134,desc:'Formal leather belt with silver buckle'},
+  {id:20,name:'Canvas Casual Belt',cat:'belts',price:350,oldPrice:500,badge:'',rating:4.5,reviews:76,desc:'Casual canvas belt for everyday wear'},
+  {id:21,name:'Reversible Leather Belt',cat:'belts',price:950,oldPrice:1300,badge:'hot',rating:4.9,reviews:89,desc:'Two-tone reversible with premium buckle'},
+  {id:22,name:'Braided Rope Belt',cat:'belts',price:450,oldPrice:650,badge:'new',rating:4.6,reviews:34,desc:'Stylish braided design, adjustable'},
+  {id:23,name:'Military Tactical Belt',cat:'belts',price:650,oldPrice:900,badge:'',rating:4.7,reviews:57,desc:'Heavy-duty nylon with metal buckle'},
+  {id:24,name:'Slim Leather Formal Belt',cat:'belts',price:850,oldPrice:1100,badge:'sale',rating:4.8,reviews:48,desc:'Slim-cut premium leather formal belt'},
+  // BRACELETS
+  {id:25,name:'Tiger Eye Stone Bracelet',cat:'bracelets',price:650,oldPrice:900,badge:'hot',rating:4.9,reviews:167,desc:'Natural tiger eye beads, elastic band'},
+  {id:26,name:'Leather Cuff Bracelet',cat:'bracelets',price:450,oldPrice:650,badge:'sale',rating:4.7,reviews:93,desc:'Genuine leather cuff with metal studs'},
+  {id:27,name:'Stainless Steel Chain',cat:'bracelets',price:850,oldPrice:1100,badge:'new',rating:4.8,reviews:78,desc:'Premium stainless steel chain bracelet'},
+  {id:28,name:'Black Onyx Beads',cat:'bracelets',price:550,oldPrice:750,badge:'',rating:4.6,reviews:45,desc:'Matte black onyx bead bracelet'},
+  {id:29,name:'Wood & Steel Combo',cat:'bracelets',price:750,oldPrice:1000,badge:'hot',rating:4.9,reviews:56,desc:'Natural wood with stainless steel'},
+  {id:30,name:'Gold-Plated Bangle',cat:'bracelets',price:950,oldPrice:1300,badge:'sale',rating:4.8,reviews:34,desc:'Gold-plated metal bangle for style'},
+];
+
+let cart = JSON.parse(localStorage.getItem('smdCart') || '[]');
+let wishlist = JSON.parse(localStorage.getItem('smdWish') || '[]');
+let orders = JSON.parse(localStorage.getItem('smdOrders') || '[]');
+let selectedPayment = 'cod';
+let currentCategory = 'all';
+let couponDiscount = 0;
+const COUPONS = { 'SMDLUXE10': 10, 'EID2025': 20, 'SMD20': 20 };
+
+// ==================== RENDER PRODUCTS ====================
+function getEmoji(cat, id) {
+  const arr = EMOJIS[cat] || ['📦'];
+  return arr[(id - 1) % arr.length];
+}
+
+function renderProducts(list) {
+  const grid = document.getElementById('productsGrid');
+  const noP = document.getElementById('noProducts');
+  if (!list.length) {
+    grid.innerHTML = '';
+    noP.style.display = 'block';
+    return;
+  }
+  noP.style.display = 'none';
+  grid.innerHTML = list.map(p => {
+    const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : 0;
+    const inWish = wishlist.some(w => w.id === p.id);
+    return `
+    <div class="product-card" id="pc${p.id}">
+      <div class="product-img-wrap">
+        <div class="emoji-placeholder">${getEmoji(p.cat, p.id)}</div>
+        ${p.badge ? `<div class="product-badge ${p.badge === 'new' ? 'new' : p.badge === 'hot' ? 'hot' : ''}">${p.badge === 'sale' ? `${disc}% OFF` : p.badge.toUpperCase()}</div>` : ''}
+        <div class="product-actions">
+          <button class="action-btn ${inWish ? 'active' : ''}" onclick="toggleWishItem(${p.id})" title="Wishlist" id="wbtn${p.id}">
+            <i class="fa${inWish ? 's' : 'r'} fa-heart" style="${inWish ? 'color:var(--red)' : ''}"></i>
+          </button>
+          <button class="action-btn" onclick="quickOrder(${p.id})" title="WhatsApp Order"><i class="fab fa-whatsapp" style="color:#25d366"></i></button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">${getCatName(p.cat)}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-rating">
+          <span class="stars">${'★'.repeat(Math.floor(p.rating))}${p.rating%1>=0.5?'½':''}</span>
+          <span class="rating-count">(${p.reviews})</span>
+        </div>
+        <div class="product-price-row">
+          <div>
+            <div class="price-main">৳ ${p.price.toLocaleString('bn-BD')}</div>
+            ${p.oldPrice ? `<div class="price-old">৳ ${p.oldPrice.toLocaleString('bn-BD')}</div>` : ''}
+          </div>
+          ${disc > 0 ? `<div class="discount-tag">${disc}% ছাড়</div>` : ''}
+        </div>
+        <div class="product-card-btns">
+          <button class="btn-cart" onclick="addToCart(${p.id})"><i class="fas fa-cart-plus"></i> Cart</button>
+          <a class="btn-wa" href="https://wa.me/8801315086083?text=${encodeURIComponent(`🛍️ অর্ডার করতে চাই:\n📦 ${p.name}\n💰 মূল্য: ৳${p.price}\n\nনাম ও ঠিকানা দিবো কি ।`)}" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getCatName(cat) {
+  const m = {sunglasses:'Sunglasses',watches:'Watches',wallets:'Wallets',belts:'Belts',bracelets:'Bracelets'};
+  return m[cat] || cat;
+}
+
+// ==================== CATEGORY FILTER ====================
+const sectionTitles = {
+  all:'সব প্রিমিয়াম পণ্য', sunglasses:'Premium Sunglasses',
+  watches:'Luxury Watches', wallets:'Premium Wallets',
+  belts:'Designer Belts', bracelets:'Men\'s Bracelets'
+};
+const sectionSubs = {
+  all:'সেরা মানের পুরুষদের ফ্যাশন অ্যাক্সেসরিজ',
+  sunglasses:'UV protected & stylish eyewear collection',
+  watches:'Timeless luxury watches for every occasion',
+  wallets:'Slim, stylish & functional wallets',
+  belts:'Premium quality dress & casual belts',
+  bracelets:'Bold & elegant men\'s bracelets'
+};
+
+function showSection(cat, navBtn, chipBtn) {
+  currentCategory = cat;
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  if(navBtn) navBtn.classList.add('active');
+  // Update chips
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  if(chipBtn) chipBtn.classList.add('active');
+  document.getElementById('sectionTitle').textContent = sectionTitles[cat]||'পণ্য';
+  document.getElementById('sectionSub').textContent = sectionSubs[cat]||'';
+  const filtered = cat==='all' ? products : products.filter(p=>p.cat===cat);
+  renderProducts(filtered);
+  document.getElementById('productsSection').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function sortProducts(type, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  let list = currentCategory==='all' ? [...products] : products.filter(p=>p.cat===currentCategory);
+  if(type==='low') list.sort((a,b)=>a.price-b.price);
+  else if(type==='high') list.sort((a,b)=>b.price-a.price);
+  else if(type==='discount') list = list.filter(p=>p.oldPrice).sort((a,b)=>(b.oldPrice-b.price)-(a.oldPrice-a.price));
+  renderProducts(list);
+}
+
+function searchProducts(q) {
+  if(!q.trim()) { renderProducts(currentCategory==='all'?products:products.filter(p=>p.cat===currentCategory)); return; }
+  const r = products.filter(p => p.name.toLowerCase().includes(q.toLowerCase()) || getCatName(p.cat).toLowerCase().includes(q.toLowerCase()));
+  renderProducts(r);
+  document.getElementById('sectionTitle').textContent = `"${q}" এর ফলাফল`;
+}
+
+// ==================== CART ====================
+function saveCart() { localStorage.setItem('smdCart', JSON.stringify(cart)); }
+function updateCartBadge() {
+  const c = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartBadge').textContent = c;
+  document.getElementById('mobileCartCount').textContent = c;
+}
+
+function addToCart(id) {
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  const existing = cart.find(x=>x.id===id);
+  if(existing) existing.qty++;
+  else cart.push({...p, qty:1});
+  saveCart();
+  updateCartBadge();
+  renderCartItems();
+  showToast(`✓ "${p.name}" Cart-এ যোগ হয়েছে!`, 'check-circle');
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(x=>x.id!==id);
+  saveCart();
+  updateCartBadge();
+  renderCartItems();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(x=>x.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) removeFromCart(id);
+  else { saveCart(); renderCartItems(); }
+  updateCartBadge();
+}
+
+function getCartSubtotal() { return cart.reduce((s,i)=>s+(i.price*i.qty),0); }
+
+function renderCartItems() {
+  const el = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+  if(!cart.length) {
+    el.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Cart খালি আছে।<br/>পণ্য যোগ করুন!</p></div>`;
+    footer.style.display = 'none';
+    return;
+  }
+  footer.style.display = 'block';
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">${getEmoji(item.cat, item.id)}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">৳ ${item.price.toLocaleString()}</div>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        </div>
+      </div>
+      <button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+    </div>`).join('');
+  const sub = getCartSubtotal();
+  document.getElementById('cartSubtotal').textContent = `৳ ${sub.toLocaleString()}`;
+  document.getElementById('cartTotal').textContent = `৳ ${(sub+60).toLocaleString()}`;
+}
+
+function toggleCart() {
+  const s = document.getElementById('cartSidebar');
+  const o = document.getElementById('cartOverlay');
+  const isOpen = s.classList.contains('open');
+  closeAllPanels();
+  if(!isOpen) { s.classList.add('open'); o.classList.add('open'); }
+}
+
+// ==================== WISHLIST ====================
+function saveWish() { localStorage.setItem('smdWish', JSON.stringify(wishlist)); }
+function updateWishBadge() {
+  const b = document.getElementById('wishBadge');
+  b.textContent = wishlist.length;
+  b.style.display = wishlist.length ? 'flex' : 'none';
+}
+
+function toggleWishItem(id) {
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  const idx = wishlist.findIndex(x=>x.id===id);
+  if(idx>=0) {
+    wishlist.splice(idx,1);
+    showToast(`"${p.name}" Wishlist থেকে সরানো হয়েছে`, 'heart');
+  } else {
+    wishlist.push(p);
+    showToast(`♡ "${p.name}" Wishlist-এ যোগ হয়েছে!`, 'heart');
+  }
+  saveWish();
+  updateWishBadge();
+  renderWishlist();
+  // Update button in product card
+  const btn = document.getElementById(`wbtn${id}`);
+  if(btn) {
+    const inW = wishlist.some(x=>x.id===id);
+    btn.innerHTML = `<i class="fa${inW?'s':'r'} fa-heart" style="${inW?'color:var(--red)':''}"></i>`;
+  }
+}
+
+function renderWishlist() {
+  const el = document.getElementById('wishlistItems');
+  if(!wishlist.length) {
+    el.innerHTML = `<div class="cart-empty"><i class="fas fa-heart"></i><p>Wishlist খালি।<br/>পছন্দের পণ্য সংরক্ষণ করুন!</p></div>`;
+    return;
+  }
+  el.innerHTML = wishlist.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">${getEmoji(item.cat, item.id)}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">৳ ${item.price.toLocaleString()}</div>
+        <div class="qty-ctrl" style="margin-top:10px;">
+          <button class="qty-btn" onclick="addToCart(${item.id});showToast('Cart-এ যোগ হয়েছে!','check-circle')" style="width:auto;padding:0 12px;border-radius:8px;font-size:0.78rem;">+ Cart</button>
+        </div>
+      </div>
+      <button class="remove-item" onclick="toggleWishItem(${item.id})"><i class="fas fa-times"></i></button>
+    </div>`).join('');
+}
+
+function toggleWishlist() {
+  const s = document.getElementById('wishlistSidebar');
+  const o = document.getElementById('wishOverlay');
+  const isOpen = s.classList.contains('open');
+  closeAllPanels();
+  if(!isOpen) { s.classList.add('open'); o.classList.add('open'); }
+}
+
+// ==================== CHECKOUT ====================
+function openCheckout() {
+  closeAllPanels();
+  if(!cart.length) { showToast('Cart খালি! পণ্য যোগ করুন।', 'exclamation-circle'); return; }
+  renderCheckoutSummary();
+  document.getElementById('checkoutModal').classList.add('open');
+}
+function closeCheckout() { document.getElementById('checkoutModal').classList.remove('open'); }
+
+function renderCheckoutSummary() {
+  const el = document.getElementById('checkoutItems');
+  const sub = getCartSubtotal();
+  const disc = Math.round(sub * couponDiscount/100);
+  const total = sub + 60 - disc;
+  el.innerHTML = cart.map(i=>`<div class="order-sum-row"><span>${i.name} ×${i.qty}</span><span>৳ ${(i.price*i.qty).toLocaleString()}</span></div>`).join('') +
+    (disc>0?`<div class="order-sum-row" style="color:var(--green)"><span>কুপন ছাড়</span><span>−৳ ${disc}</span></div>`:'')+
+    `<div class="order-sum-row"><span>ডেলিভারি</span><span>৳ ৬০</span></div>`;
+  document.getElementById('checkoutTotal').textContent = `৳ ${total.toLocaleString()}`;
+}
+
+function selectPay(el, method) {
+  document.querySelectorAll('.pay-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedPayment = method;
+  const info = document.getElementById('paymentInfo');
+  if(['bkash','nagad','rocket','upay'].includes(method)) {
+    info.style.display='block';
+    info.innerHTML=`<i class="fas fa-info-circle"></i> <strong>${method.charAt(0).toUpperCase()+method.slice(1)}</strong> Send Money নম্বর: <strong>01315086083</strong>`;
+  } else if(method==='whatsapp') {
+    info.style.display='block';
+    info.innerHTML=`<i class="fab fa-whatsapp"></i> WhatsApp: <strong>01315086083</strong>`;
+  } else { info.style.display='none'; }
+}
+
+function applyCoupon() {
+  const code = document.getElementById('couponCode').value.trim().toUpperCase();
+  if(COUPONS[code]) {
+    couponDiscount = COUPONS[code];
+    showToast(`✓ কুপন "${code}" প্রয়োগ হয়েছে! ${couponDiscount}% ছাড়`, 'check-circle');
+    renderCheckoutSummary();
+  } else {
+    showToast('❌ ভুল কুপন কোড!', 'times-circle');
+  }
+}
+
+function placeOrder() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  if(!name||!phone||!address) { showToast('সব তথ্য পূরণ করুন!', 'exclamation-circle'); return; }
+  const sub = getCartSubtotal();
+  const disc = Math.round(sub*couponDiscount/100);
+  const total = sub+60-disc;
+  const orderId = 'SMD-' + Date.now().toString().slice(-6);
+  const order = { id: orderId, name, phone, address, items: [...cart], total, payment: selectedPayment, date: new Date().toLocaleString('bn-BD'), status:'Pending' };
+  orders.push(order);
+  localStorage.setItem('smdOrders', JSON.stringify(orders));
+  // WhatsApp notification
+  const waMsg = `🛍️ নতুন অর্ডার!\n📋 Order ID: ${orderId}\n👤 নাম: ${name}\n📱 ফোন: ${phone}\n📍 ঠিকানা: ${address}\n\n🛒 পণ্য:\n${cart.map(i=>`- ${i.name} ×${i.qty} = ৳${i.price*i.qty}`).join('\n')}\n\n💰 মোট: ৳${total}\n💳 পেমেন্ট: ${selectedPayment.toUpperCase()}`;
+  // Show success
+  document.getElementById('checkoutBody').innerHTML = `
+    <div class="order-success">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <h3>অর্ডার সফল! 🎉</h3>
+      <p>আপনার অর্ডার গ্রহণ করা হয়েছে। শীঘ্রই আমরা যোগাযোগ করব।</p>
+      <div class="order-id">📦 Order ID: <strong>${orderId}</strong></div>
+      <a href="https://wa.me/8801315086083?text=${encodeURIComponent(waMsg)}" target="_blank" class="place-order-btn" style="text-decoration:none;display:flex;justify-content:center;">
+        <i class="fab fa-whatsapp"></i> WhatsApp-এ নিশ্চিত করুন
+      </a>
+      <button onclick="closeCheckout();document.getElementById('checkoutBody').innerHTML=''" style="margin-top:14px;background:none;color:var(--gray-400);font-size:0.85rem;text-decoration:underline;">বন্ধ করুন</button>
+    </div>`;
+  cart = [];
+  saveCart();
+  updateCartBadge();
+  renderCartItems();
+  updateAdminStats();
+}
+
+// ==================== QUICK ORDER ====================
+function quickOrder(id) {
+  const p = products.find(x=>x.id===id);
+  const msg = `🛍️ অর্ডার করতে চাই:\n📦 ${p.name}\n💰 মূল্য: ৳${p.price}\n\nনাম ও ঠিকানা দিন।`;
+  window.open(`https://wa.me/8801315086083?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ==================== PANELS ====================
+function closeAllPanels() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('wishlistSidebar').classList.remove('open');
+  document.getElementById('wishOverlay').classList.remove('open');
+}
+
+// ==================== LOGIN MODAL ====================
+function openLogin() { document.getElementById('loginModal').classList.add('open'); }
+function closeLogin() { document.getElementById('loginModal').classList.remove('open'); }
+function switchLoginTab(tab, btn) {
+  document.querySelectorAll('.login-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('loginForm').classList.toggle('active', tab==='login');
+  document.getElementById('signupForm').classList.toggle('active', tab==='signup');
+}
+document.getElementById('loginModal').addEventListener('click', function(e){
+  if(e.target===this) closeLogin();
+});
+
+// ==================== ADMIN PANEL ====================
+function openAdmin() {
+  document.getElementById('adminPanel').classList.add('open');
+  document.getElementById('adminOverlay').classList.add('open');
+  updateAdminStats();
+  renderAdminProducts();
+}
+function closeAdmin() {
+  document.getElementById('adminPanel').classList.remove('open');
+  document.getElementById('adminOverlay').classList.remove('open');
+}
+function adminTab(tab, btn) {
+  document.querySelectorAll('.admin-nav-item').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('admin-'+tab).classList.add('active');
+}
+function updateAdminStats() {
+  document.getElementById('totalProductsStat').textContent = products.length;
+  document.getElementById('totalOrdersStat').textContent = orders.length + 3;
+}
+function renderAdminProducts() {
+  const body = document.getElementById('adminProductBody');
+  body.innerHTML = products.map(p => `
+    <tr>
+      <td>${p.name}</td>
+      <td>${getCatName(p.cat)}</td>
+      <td>৳${p.price}</td>
+      <td>${p.oldPrice?Math.round((1-p.price/p.oldPrice)*100)+'%':'-'}</td>
+      <td><span class="status-badge status-confirmed">In Stock</span></td>
+      <td><div class="action-btns">
+        <button class="btn-edit" onclick="editProduct(${p.id})">সম্পাদনা</button>
+        <button class="btn-del" onclick="deleteProduct(${p.id})">মুছুন</button>
+      </div></td>
+    </tr>`).join('');
+}
+function deleteProduct(id) {
+  if(!confirm('পণ্য মুছে ফেলবেন?')) return;
+  products = products.filter(p=>p.id!==id);
+  renderAdminProducts();
+  renderProducts(currentCategory==='all'?products:products.filter(p=>p.cat===currentCategory));
+  updateAdminStats();
+  showToast('পণ্য মুছে ফেলা হয়েছে।', 'trash');
+}
+function editProduct(id) {
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  adminTab('addProduct', document.querySelector('[onclick*="addProduct"]'));
+  document.getElementById('apName').value = p.name;
+  document.getElementById('apCat').value = p.cat;
+  document.getElementById('apPrice').value = p.price;
+  document.getElementById('apOldPrice').value = p.oldPrice||'';
+  document.getElementById('apBadge').value = p.badge||'';
+  document.getElementById('apRating').value = p.rating;
+  showToast('সম্পাদনার জন্য ফর্ম পূর্ণ করুন।', 'pen');
+}
+function addProductAdmin() {
+  const name = document.getElementById('apName').value.trim();
+  const cat = document.getElementById('apCat').value;
+  const price = parseInt(document.getElementById('apPrice').value);
+  const oldPrice = parseInt(document.getElementById('apOldPrice').value)||0;
+  const badge = document.getElementById('apBadge').value;
+  const rating = parseFloat(document.getElementById('apRating').value)||4.5;
+  if(!name||!price) { showToast('নাম ও মূল্য দিন!', 'exclamation-circle'); return; }
+  const newId = Math.max(...products.map(p=>p.id))+1;
+  products.push({id:newId, name, cat, price, oldPrice, badge, rating, reviews:0, desc:''});
+  renderAdminProducts();
+  renderProducts(currentCategory==='all'?products:products.filter(p=>p.cat===currentCategory));
+  updateAdminStats();
+  // Clear form
+  ['apName','apPrice','apOldPrice','apRating','apDesc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('apBadge').value='';
+  showToast(`✓ "${name}" সফলভাবে যোগ করা হয়েছে!`, 'check-circle');
+}
+function saveSettings() {
+  showToast('✓ সেটিংস সেভ হয়েছে!', 'check-circle');
+}
+
+// ==================== MOBILE MENU ====================
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ==================== TOAST ====================
+let toastTimer;
+function showToast(msg, icon='check-circle') {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.querySelector('i').className = `fas fa-${icon}`;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+// ==================== NAVBAR SCROLL ====================
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+// ==================== INIT ====================
+function init() {
+  renderProducts(products);
+  updateCartBadge();
+  updateWishBadge();
+  renderCartItems();
+  renderWishlist();
+  updateAdminStats();
+}
+init();
+</script>
+</body>
+</html>
